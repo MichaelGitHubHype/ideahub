@@ -60,7 +60,7 @@ export default function Home() {
             />
           </Flex>
           <Center>
-            <Stack marginTop="10%">
+            <Stack marginTop="5%">
               <HStack marginLeft="30px">
                 <Image width="50px" src={StarImage}></Image>
                 <Heading color="white">Get An Idea</Heading>
@@ -124,7 +124,7 @@ export default function Home() {
                     maxWidth="850px"
                     size="lg"
                     color="white"
-                    marginBottom="-50px"
+                    marginBottom="5px"
                     bg="linear-gradient(-325deg, #fc5c7d, #6a82fb, #05dfd7)"
                     borderRadius="5px"
                     textAlign="center"
