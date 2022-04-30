@@ -19,7 +19,7 @@ class IdeasView(APIView):
             bird_course = random.choice(courses.readlines())
         with open("ideas/files/travel.txt") as travel:
             travel_idea = random.choice(travel.readlines())
-        with open("ideas/files/youtube.txt") as travel:
+        with open("ideas/files/video.txt") as travel:
             video = random.choice(travel.readlines())
 
         return Response({
