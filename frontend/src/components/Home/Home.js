@@ -6,12 +6,19 @@ import {
   Heading,
   Image,
   Select,
-  Text,
   Center,
-  Square,
   HStack,
   Stack,
   Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  useDisclosure,
+  Input,
+  Textarea,
 } from "@chakra-ui/react";
 import "./Home.css";
 import Zoom from "react-reveal/Zoom";
@@ -24,6 +31,101 @@ import axios from "axios";
 export default function Home() {
   const [idea, setIdea] = useState("");
   const [ideaType, setIdeaType] = useState("hackathon");
+  const [formData, setFormData] = useState({
+    category: "hackathon",
+    content: "",
+  });
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  function deployModal() {
+    return (
+      <>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Add idea </ModalHeader>
+            {/* <ModalCloseButton /> */}
+            <ModalBody>
+              <Heading
+                marginTop="0.5rem"
+                as="h3"
+                size="sm"
+                style={{ color: "black", opacity: "0.6" }}
+              >
+                Category
+              </Heading>
+              <Select
+                marginTop="0.5rem"
+                onChange={(event) => {
+                  setFormData({ ...formData, category: event.target.value });
+                }}
+              >
+                <option style={{ color: "black" }} value="hackathon">
+                  Hackathon
+                </option>
+                <option style={{ color: "black" }} value="course">
+                  Bird Courses
+                </option>
+                <option style={{ color: "black" }} value="travel">
+                  Travel
+                </option>
+                <option style={{ color: "black" }} value="video">
+                  Video
+                </option>
+              </Select>
+              <Heading
+                marginTop="0.5rem"
+                as="h3"
+                size="sm"
+                style={{ color: "black", opacity: "0.6" }}
+              >
+                Input
+              </Heading>
+              <Input
+                size="md"
+                placeholder="LIN204"
+                onChange={(event) => {
+                  setFormData({ ...formData, content: event.target.value });
+                }}
+                style={{
+                  fill: "white",
+                  marginTop: "0.5rem",
+                  background: "white",
+                  color: "black",
+                }}
+              />
+              <Heading
+                marginTop="0.5rem"
+                as="h3"
+                size="sm"
+                style={{ color: "black", opacity: "0.6" }}
+              >
+                Justification (Optional)
+              </Heading>
+              <Textarea
+                onChange={(event) => {}}
+                placeholder="I took it last year and the content on the exams and assignments is straight from the professor's Youtube videos."
+                maxHeight="30vh"
+                size="sm"
+              />
+            </ModalBody>
+
+            <ModalFooter>
+              <Box marginRight="3rem"></Box>
+              <HStack>
+                <Button mr={3} onClick={onClose}>
+                  CANCEL
+                </Button>
+                <Button colorScheme="blue" mr={3} onClick={createIdea}>
+                  ADD IDEA
+                </Button>
+              </HStack>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
 
   const getIdea = () => {
     axios
@@ -34,13 +136,31 @@ export default function Home() {
       .catch((error) => {});
   };
 
+  const createIdea = () => {
+    if (formData["content"] === "") {
+      alert("Invalid input was given!");
+      return;
+    }
+
+    axios
+      .post(
+        "http://127.0.0.1:8000/ideas/",
+        { [formData["category"]]: formData["content"] },
+        null
+      )
+      .then(() => {
+        setFormData({ ...formData, content: "" });
+        onClose();
+      })
+      .catch(() => {});
+  };
+
   return (
     <div>
       <Zoom>
         <Heading
           color="white"
           textAlign="center"
-          //   marginTop="5%"
           opacity="0.8"
           backgroundColor="rgba(0, 0, 0, 0.5)"
           bg="linear-gradient(-45deg, #fc5c7d, #6a82fb, #05dfd7)"
@@ -60,7 +180,7 @@ export default function Home() {
             />
           </Flex>
           <Center>
-            <Stack marginTop="5%">
+            <Stack marginTop="7%">
               <HStack marginLeft="30px">
                 <Image width="50px" src={StarImage}></Image>
                 <Heading color="white">Get An Idea</Heading>
@@ -110,7 +230,7 @@ export default function Home() {
                 width="20.5rem"
                 height="5rem"
                 bg="linear-gradient(-325deg, #fc5c7d, #6a82fb, #05dfd7)"
-                //   onClick={getIdea}
+                onClick={onOpen}
               >
                 Add Idea
               </Button>
@@ -124,7 +244,7 @@ export default function Home() {
                     maxWidth="850px"
                     size="lg"
                     color="white"
-                    marginBottom="5px"
+                    marginBottom="10px"
                     bg="linear-gradient(-325deg, #fc5c7d, #6a82fb, #05dfd7)"
                     borderRadius="5px"
                     textAlign="center"
@@ -139,7 +259,7 @@ export default function Home() {
                     style={{ marginLeft: "25px" }}
                     src={SpaceshipImage}
                     width="150px"
-                    opacity="0.4"
+                    opacity="0.8"
                   ></Image>
                   <Image
                     style={{ marginLeft: "25px" }}
@@ -153,6 +273,7 @@ export default function Home() {
           )}
         </Box>
       </Zoom>
+      {deployModal()}
     </div>
   );
 }
