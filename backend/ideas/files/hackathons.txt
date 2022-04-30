@@ -2,3 +2,21 @@ Create a project that generates random ideas
 Create a multiplayer online game
 Create a blog
 Perform Data Visualization with Python
+Create a text-adventure game
+Create a basic website, with some interactive features
+Write a Python script to automate something you normally do manually
+Create a basic Discord bot that interacts with people in a server
+Create a personal website to showcase your projects
+Create a program that uses database software (like MySQL, PostgreSQL, or MongoDB).
+Use Google Drive’s API to automate some task.
+Recreate a puzzle game, like Bejeweled, Kami 2, or Tents and Trees.
+Use exterior APIs (i.e. for Pokemon) to create some sort of meaningful Discord bot, or website.
+Use a web-scraping software to aggregate and display useful data
+Create an app to recommend outfits based on the weather
+Build a chatbot.
+Create a visualizer for something in math (Fundamental Theorem of Calculus, ordinary differential equation solver, etc)
+Make an autocorrect algorithm that gives suggestions as a user is typing.
+Use machine learning libraries to create a model that solves some real-world problem.
+Create a programming language, and a transpiler/compiler for it.
+Create an application for people to meet new friends with common interests.
+Use facial recognition to recognize if someone’s paying attention to the screen
