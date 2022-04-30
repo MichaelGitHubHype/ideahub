@@ -16,6 +16,8 @@ import {
 import "./Home.css";
 import Zoom from "react-reveal/Zoom";
 import StarImage from "../../assets/images/star.png";
+import SpaceshipImage from "../../assets/images/spaceship.png";
+import FlamesImage from "../../assets/images/flames.png";
 import { useState } from "react";
 import axios from "axios";
 
@@ -102,11 +104,40 @@ export default function Home() {
               </HStack>
             </Stack>
           </Center>
-          <Center>
-            <Heading marginLeft="30px" marginTop="30px" color="white">
-              {idea && idea}
-            </Heading>
-          </Center>
+          {idea && (
+            <>
+              <Center>
+                <Stack marginLeft="25px" marginTop="30px">
+                  <Heading
+                    size="lg"
+                    color="white"
+                    marginBottom="-50px"
+                    bg="linear-gradient(-325deg, #fc5c7d, #6a82fb, #05dfd7)"
+                    borderRadius="5px"
+                    textAlign="center"
+                  >
+                    {idea}
+                  </Heading>
+                </Stack>
+              </Center>
+              <Center>
+                <Box style={{ position: "static" }}>
+                  <Image
+                    style={{ marginLeft: "25px" }}
+                    src={SpaceshipImage}
+                    width="150px"
+                    opacity="0.4"
+                  ></Image>
+                  <Image
+                    style={{ marginLeft: "25px" }}
+                    src={FlamesImage}
+                    width="150px"
+                    className="extend"
+                  ></Image>
+                </Box>
+              </Center>
+            </>
+          )}
         </Box>
       </Zoom>
     </div>
