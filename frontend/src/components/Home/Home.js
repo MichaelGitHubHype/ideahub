@@ -60,7 +60,7 @@ export default function Home() {
             />
           </Flex>
           <Center>
-            <Stack marginTop="15%">
+            <Stack marginTop="10%">
               <HStack marginLeft="30px">
                 <Image width="50px" src={StarImage}></Image>
                 <Heading color="white">Get An Idea</Heading>
@@ -82,7 +82,7 @@ export default function Home() {
                     Hackathon
                   </option>
                   <option style={{ color: "black" }} value="course">
-                    Courses
+                    Bird Courses
                   </option>
                   <option style={{ color: "black" }} value="travel">
                     Travel
@@ -104,6 +104,16 @@ export default function Home() {
                   Generate
                 </Button>
               </HStack>
+              <Button
+                _hover={{ transform: "scale(1.05);" }}
+                color="white"
+                width="20.5rem"
+                height="5rem"
+                bg="linear-gradient(-325deg, #fc5c7d, #6a82fb, #05dfd7)"
+                //   onClick={getIdea}
+              >
+                Add Idea
+              </Button>
             </Stack>
           </Center>
           {idea && (
