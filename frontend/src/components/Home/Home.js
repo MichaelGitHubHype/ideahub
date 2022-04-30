@@ -83,7 +83,6 @@ export default function Home() {
               </Heading>
               <Input
                 size="md"
-                placeholder="LIN204"
                 onChange={(event) => {
                   setFormData({ ...formData, content: event.target.value });
                 }}
@@ -102,12 +101,7 @@ export default function Home() {
               >
                 Justification (Optional)
               </Heading>
-              <Textarea
-                onChange={(event) => {}}
-                placeholder="I took it last year and the content on the exams and assignments is straight from the professor's Youtube videos."
-                maxHeight="30vh"
-                size="sm"
-              />
+              <Textarea maxHeight="30vh" size="sm" />
             </ModalBody>
 
             <ModalFooter>
