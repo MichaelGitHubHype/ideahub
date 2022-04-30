@@ -1,2 +1,4 @@
 Create a project that generates random ideas
 Create a multiplayer online game
+Create a blog
+Perform Data Visualization with Python

@@ -22,3 +22,15 @@ class IdeasView(APIView):
             "hackathon": hackathon.strip(),
             "course": bird_course.strip()
         })
+
+    def post(self, request, *args, **kwargs):
+        print("received request", request)
+        if 'course' in request.data:
+            with open('ideas/files/courses.txt', 'a') as courses:
+                print("adding course...")
+                courses.write(request.data['course'] + '\n')
+        if 'hackathon' in request.data:
+            with open('ideas/files/hackathons.txt', 'a') as hackathons:
+                hackathons.write(request.data['hackathon'] + '\n')
+
+        return HttpResponse("Ok")
