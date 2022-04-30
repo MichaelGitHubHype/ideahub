@@ -69,7 +69,6 @@ export default function Home() {
                 <Select
                   cursor="pointer"
                   border="none"
-                  placeholder="Hackathon"
                   _hover={{ transform: "scale(1.05);" }}
                   color="white"
                   width="10rem"
@@ -85,8 +84,11 @@ export default function Home() {
                   <option style={{ color: "black" }} value="course">
                     Courses
                   </option>
-                  <option style={{ color: "black" }} value="option3">
-                    Option 3
+                  <option style={{ color: "black" }} value="travel">
+                    Travel
+                  </option>
+                  <option style={{ color: "black" }} value="video">
+                    Video
                   </option>
                 </Select>
 
@@ -109,6 +111,7 @@ export default function Home() {
               <Center>
                 <Stack marginLeft="25px" marginTop="30px">
                   <Heading
+                    maxWidth="850px"
                     size="lg"
                     color="white"
                     marginBottom="-50px"
