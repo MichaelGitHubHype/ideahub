@@ -20,6 +20,5 @@ from ideas.views import IdeasView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello),
     path('ideas/', IdeasView.as_view(), name='get-idea')
 ]

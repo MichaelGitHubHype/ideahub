@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 import random
+import os
 
 # Create your views here.
 def hello(request):
@@ -11,8 +12,13 @@ def hello(request):
 
 class IdeasView(APIView):
     def get(self, request, *args, **kwargs):
-        options = ['a', 'b', 'c']
-        letter = random.choice(options)
+        print(os.listdir("."))
+        with open("ideas/files/hackathons.txt") as hackathons:
+            hackathon = random.choice(hackathons.readlines())
+        with open("ideas/files/courses.txt") as courses:
+            bird_course = random.choice(courses.readlines())
+
         return Response({
-            "letter": letter
+            "hackathon": hackathon.strip(),
+            "course": bird_course.strip()
         })
