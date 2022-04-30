@@ -7,9 +7,8 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App">
-        <div class="bg">
-          <Home />
-        </div>
+        <Home />
+        <div class="bg"></div>
 
         <div class="star-field">
           <div class="layer"></div>
